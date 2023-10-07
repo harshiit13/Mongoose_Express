@@ -4,7 +4,7 @@ const path = require("path")
 const app=express()
 
 
-mongoose.connect('mongodb://localhost:27017/DairyData', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://0.0.0.0:27017/DairyData', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -19,7 +19,7 @@ app.set('views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 
 app.get('/',(req,res)=>{
-    res.send("Hello there")
+    res.sendFile(path. join(__dirname, 'views/home.html'));
 })
 
 app.listen(3000,()=>{
