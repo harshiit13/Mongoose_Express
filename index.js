@@ -3,8 +3,12 @@ const mongoose = require("mongoose")
 const path = require("path")
 const app=express()
 
+const Product = require("./models/product");
+const User = require("./models/user");
+const Farm = require("./models/farm");
 
-mongoose.connect('mongodb://0.0.0.0:27017/DairyData', { useNewUrlParser: true, useUnifiedTopology: true })
+
+mongoose.connect('mongodb://127.0.0.1:27017/DairyData', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -18,8 +22,16 @@ mongoose.connect('mongodb://0.0.0.0:27017/DairyData', { useNewUrlParser: true, u
 app.set('views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/',(req,res)=>{
-    res.sendFile(path. join(__dirname, 'views/home.html'));
+    res.render("home")
+})
+
+app.get('/product',async (req,res)=>{
+    const products = await Product.find({});
+    console.log(products)
+    res.render("productview",{products})
 })
 
 app.listen(3000,()=>{
