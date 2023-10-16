@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Farms</title>
+    <style>
+      nav {
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 15px 0;
+  box-shadow: 0px 5px 0px #408da7;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav.shift ul li a {
+  position:relative;
+  z-index: 1;
+}
+nav.shift ul li a:hover {
+  color: #07680a;
+}
+nav.shift ul li a:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  background: #0ff116;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+nav.shift ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+      .b1{
+        margin-left: 85%;
+      }
+        .d1{
+            margin-left: 0px;
+            width: auto;
+            height: 200px;
+            border: solid 3px greenyellow;
+            transition: all 0.2s;
+        }
+
+        .d1:hover{
+        translate:5px -5px;
+        box-shadow:-5px 5px rgb(104, 145, 104);
+          border-radius: 15px;
+          background-color: rgb(195, 255, 235);
+        }
+
+        body{
+            margin: 0%;
+        }
+    </style>
+</head>
+
+<body>
+
+  <nav class="shift">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/farms">Farms</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/candy">Candy</a></li>
+      <li><a href="#">Nice staff</a></li>
+    </ul>
+  </nav>
+
+
+    <h1 class="text-center m-4">All Farms</h1>
+    <ul>
+        <% for(let farm of farms) { %>
+
+
+        <div class="d1 mx-5 my-5">
+
+            <h1 class="mx-3 mt-2 text-info"><%= farm.name %> Farm</h1>
+            <h3 class="mx-4 mt-2 ">Location : <%= farm.city %></h3>
+
+            <div class="row">
+              <div class="col-6 mx-4">
+                <h4>E-MAIL : <%= farm.email %></h4>
+              </div>
+              <div class="col-6">
+                
+          </div>
+          <form action="/farms/<%=farm._id%>" class="">
+            <button class="b1 btn btn-primary">Viewe Details</button>
+        </form>
+            </div>
+ 
+
+    </div>
+
+        <% }%>
+    </ul>
+
+    <form action="/farms/new" class=" m-3">
+      <button class="b1 btn btn-success">Add Farm</button>
+  </form>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

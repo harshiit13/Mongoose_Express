@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        .h1{
+            color: rgb(87, 7, 206);
+        }
+        .d1{
+            border: solid 2px blueviolet;
+            margin: 25px;
+            padding: 20px;
+            transition: all 0.4s;
+        }
+        .d1:hover{
+            translate:5px -5px;
+            border-radius: 15px;
+            background-color:rgb(205, 190, 218);
+            
+        }
+        .p1{
+            color: brown;
+        }
+        .f1{
+            margin-top: 29px;
+            margin-left: 45%;
+        }
+
+
+        nav {
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px 0;
+  box-shadow: 0px 5px 0px #408da7;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #040404;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav.shift ul li a {
+  position:relative;
+  z-index: 1;
+}
+nav.shift ul li a:hover {
+  color: #07680a;
+}
+nav.shift ul li a:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  background: #0ff116;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+nav.shift ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="shift">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/farms">Farms</a></li>
+          <li><a href="/products">Products</a></li>
+          <li><a href="/candy">Candy</a></li>
+          <li><a href="#">Nice staff</a></li>
+        </ul>
+      </nav>
+
+
+
+    <h1 class="h1 text-center m-5"><%= category%> Products!</h1>
+    <ul>
+        <% for(let product of products) { %>
+            <div class="d1">
+        <h2 class="text-center p1"><%= product.name %></h2>
+            <button onclick="window.location.href = '/products/<%=product._id%>';" class="f1 btn btn-info">View Product</button>
+    </div>
+        <% }%>
+    </ul>
+    <%if(category !== 'All') {%>
+    <button onclick="window.location.href = '/products';" class="f1 btn btn-secondary">All Product</button>
+    <% } %>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
